@@ -7,55 +7,75 @@
   <meta name="description" content="Portfolio and projects of Behnam Emami — Transportation Engineer · Optimization · Data Science" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
-    :root{ --bg:#0b0b0d; --bg-elev:#111114; --ink:#f4f4f5; --ink-dim:#b3b3b8; --acc:#8e8eff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; }
-    body{margin:0; font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background: radial-gradient(1200px 600px at 70% -10%, rgba(142,142,255,.12), transparent 60%), var(--bg);} 
+    :root{ --bg:#0b0b0d; --bg-elev:#101013; --ink:#f4f4f5; --ink-dim:#b6b6bb; --acc:#9aa0ff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; --measure:72ch; }
+    html{scroll-behavior:smooth}
+    body{margin:0; font: 15.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(154,160,255,.10), transparent 60%),
+      linear-gradient(180deg, #0b0b0d 0%, #0b0b0d 30%, #0e0e12 100%);} 
     a{color:inherit; text-decoration:none}
+    a:focus{outline:2px solid var(--acc); outline-offset:3px; border-radius:6px}
     img{max-width:100%; display:block}
+    .measure{max-width:var(--measure)}
 
     /* NAV */
-    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.85);border-bottom:1px solid var(--muted)}
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.82);border-bottom:1px solid var(--muted)}
     .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-    .brand{font-weight:700}
+    .brand{font-weight:700;letter-spacing:.2px}
     .menu{display:flex;gap:18px}
-    .menu a{color:var(--ink-dim)}
+    .menu a{color:var(--ink-dim); position:relative; padding:6px 2px}
+    .menu a::after{content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:transparent; transform:scaleX(0); transition:transform .25s ease, background .25s ease}
     .menu a:hover{color:var(--ink)}
+    .menu a:hover::after{background:var(--ink); transform:scaleX(1)}
+    .menu a.active{color:var(--ink)}
+    .menu a.active::after{background:var(--acc); transform:scaleX(1)}
 
     /* HERO */
-    header.hero{max-width:var(--max);margin:0 auto;padding:60px 20px 40px}
-    .eyebrow{color:var(--ink-dim);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.75rem}
-    .display{font-size:clamp(36px,6vw,64px);line-height:1.06;font-weight:750;margin:.3em 0}
-    .lead{font-size:clamp(16px,2.2vw,18px);color:var(--ink-dim);max-width:780px}
+    header.hero{max-width:var(--max);margin:0 auto;padding:84px 20px 44px}
+    .eyebrow{color:var(--ink-dim);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.73rem}
+    .display{font-size:clamp(34px, 6vw, 58px); line-height:1.08; font-weight:760; letter-spacing:-.01em; margin:.35em 0}
+    .lead{font-size:clamp(16px, 2.1vw, 18px); color:var(--ink-dim)}
 
     /* SECTION */
-    section{max-width:var(--max);margin:0 auto;padding:40px 20px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
-    h2{font-size:clamp(22px,2.6vw,28px);margin:0}
+    section{max-width:var(--max);margin:0 auto;padding:48px 20px; position:relative}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}
+    h2{font-size:clamp(22px,2.5vw,28px);margin:0;letter-spacing:.2px}
     .muted{color:var(--ink-dim)}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:8px 0 28px}
 
     /* CARDS */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 12;padding:22px;background:linear-gradient(180deg, color-mix(in oklab, var(--card), black 6%), var(--card));border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .card:hover{transform:translateY(-2px)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 12;padding:22px;background:linear-gradient(180deg, color-mix(in oklab, var(--card), black 6%), var(--card));border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+    .card:hover{transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,.55); border-color:color-mix(in oklab, var(--muted), var(--acc) 20%)}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab, var(--muted), transparent 45%);color:var(--ink-dim);font-size:12px}
-    .card h3{margin:0 0 6px;font-size:18px}
+    .card h3{margin:0 0 6px;font-size:18px; letter-spacing:.2px}
+    .card p{max-width:var(--measure)}
     @media(min-width:720px){.card{grid-column:span 6}}
     @media(min-width:1024px){.card{grid-column:span 4}}
+
+    /* TIMELINE (Education) */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(#2e2e33, #3a3a41)}
+    .titem{position:relative; margin:16px 0; padding:18px 18px 16px; background:var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 25%); border-radius:16px; box-shadow:var(--shadow)}
+    .titem::before{content:""; position:absolute; left:-19px; top:22px; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 4px rgba(154,160,255,.15)}
+    .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:10px;margin-top:8px}
+    .progress-bar{height:10px;background:linear-gradient(90deg, var(--acc), #c2c6ff);width:0}
 
     /* LIST */
     .list{display:flex;flex-direction:column;gap:12px}
     .list .item{padding:16px 18px;border-radius:14px;border:1px solid color-mix(in oklab, var(--muted), transparent 35%);background:var(--card)}
 
-    /* PROGRESS */
-    .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:12px;margin-top:6px}
-    .progress-bar{height:12px;background:var(--acc);width:100%}
-
     /* FOOTER */
-    footer{padding:60px 20px 80px;color:var(--ink-dim);border-top:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
+    footer{padding:64px 20px 88px;color:var(--ink-dim);border-top:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
     .foot{max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
+
+    /* BACK TO TOP */
+    .totop{position:fixed; right:18px; bottom:18px; padding:10px 12px; border-radius:999px; border:1px solid color-mix(in oklab, var(--muted), transparent 35%); background:var(--bg-elev); color:var(--ink-dim); cursor:pointer; opacity:.0; pointer-events:none; transition:opacity .3s ease, transform .2s ease}
+    .totop.show{opacity:.95; pointer-events:auto}
+    .totop:hover{transform:translateY(-2px); color:var(--ink)}
   </style>
 </head>
 <body>
@@ -63,7 +83,7 @@
   <div class="nav-wrap">
     <nav class="nav">
       <a class="brand" href="#top">Behnam Emami</a>
-      <div class="menu">
+      <div class="menu" id="menu">
         <a href="#education">Education</a>
         <a href="#work">Work</a>
         <a href="#publications">Selected Publications</a>
@@ -77,8 +97,8 @@
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="eyebrow">Transportation · Optimization · Data Science</div>
-    <h1 class="display">Optimization Models and Data Analysis for Electric Transportation Systems, Transportation Planning, Flight & Crew Scheduling, and Signal Systems.</h1>
-    <p class="lead">PhD in Civil Engineering (Transportation), University of Minnesota. Research in electric bus planning, stochastic optimization, and traffic assignment models.</p>
+    <h1 class="display measure">Optimization Models and Data Analysis for Electric Transportation Systems, Transportation Planning, Flight & Crew Scheduling, and Signal Systems.</h1>
+    <p class="lead measure">PhD in Civil Engineering (Transportation), University of Minnesota. Research in electric bus planning, stochastic optimization, and traffic assignment models.</p>
   </header>
 
   <!-- EDUCATION -->
@@ -87,21 +107,24 @@
       <h2>Education</h2>
       <span class="muted">All degrees completed</span>
     </div>
-    <div class="card">
-      <p><strong>Ph.D. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN (Jan 2020 – May 2025)<br><em>A Comprehensive Framework for Electric Bus Transit Systems: Strategic Infrastructure Planning, Tactical Scheduling, and Operational Energy Management</em><br>Advisor: Dr. Alireza Khani</p>
-      <div class="progress"><div class="progress-bar"></div></div>
-    </div><br>
-    <div class="card">
-      <p><strong>M.S. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN (Jan 2020 – May 2023)<br>Advisor: Dr. Alireza Khani</p>
-      <div class="progress"><div class="progress-bar"></div></div>
-    </div><br>
-    <div class="card">
-      <p><strong>M.S. in Transportation Engineering</strong>, Sharif University of Technology, Tehran, Iran (Sep 2015 – Jan 2018)<br>Advisor: Prof. Hedayat Ashtiani</p>
-      <div class="progress"><div class="progress-bar"></div></div>
-    </div><br>
-    <div class="card">
-      <p><strong>B.S. in Civil Engineering</strong>, Amirkabir University of Technology, Tehran, Iran (Sep 2009 – Jan 2013)</p>
-      <div class="progress"><div class="progress-bar"></div></div>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="titem">
+        <p class="measure"><strong>Ph.D. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN (Jan 2020 – May 2025)<br><em>A Comprehensive Framework for Electric Bus Transit Systems: Strategic Infrastructure Planning, Tactical Scheduling, and Operational Energy Management</em><br>Advisor: Dr. Alireza Khani</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="measure"><strong>M.S. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN (Jan 2020 – May 2023)<br>Advisor: Dr. Alireza Khani</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="measure"><strong>M.S. in Transportation Engineering</strong>, Sharif University of Technology, Tehran, Iran (Sep 2015 – Jan 2018)<br>Advisor: Prof. Hedayat Ashtiani</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="measure"><strong>B.S. in Civil Engineering</strong>, Amirkabir University of Technology, Tehran, Iran (Sep 2009 – Jan 2013)</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
     </div>
   </section>
 
@@ -109,21 +132,22 @@
   <section id="work" class="reveal">
     <div class="section-head">
       <h2>Selected work</h2>
-      <div class="muted">Operation Research, Electric Transit, Elelctric Freight, and Transportation Network Modeling</div>
+      <div class="muted">Operations Research · Electric Transit · Electric Freight · Network Modeling</div>
     </div>
+    <div class="divider"></div>
     <div class="grid">
       <article class="card">
-        <div class="chip">Branch‑and‑Price - Time Window VRP - Set Partitioning Problem</div>
+        <div class="chip">Branch‑and‑Price · Time Windows · Set Partitioning</div>
         <h3>Fleet sizing & scheduling with limited overnight charging</h3>
         <p class="muted">Spatial–temporal–state‑of‑charge network; exact column generation to solve real‑scale networks.</p>
       </article>
       <article class="card">
-        <div class="chip">Stochastic MILP · Benders Decomposition - Branch&Cut</div>
+        <div class="chip">Stochastic MILP · Benders · Branch‑and‑Cut</div>
         <h3>Incremental electrification under uncertain energy use</h3>
-        <p class="muted">Two‑stage model for siting chargers, sizing fleet, and charging operations; Benders decomposition + Branch&Cut.</p>
+        <p class="muted">Two‑stage model for siting chargers, sizing fleet, and charging operations; Benders decomposition + Branch‑and‑Cut.</p>
       </article>
       <article class="card">
-        <div class="chip">Multi Class Traffic Assignment Model · Complementarity Model</div>
+        <div class="chip">Multi‑Class Assignment · Complementarity</div>
         <h3>Mixed‑user EV/ICE assignment</h3>
         <p class="muted">Logit‑based multimodal assignment formulated as a mixed complementarity problem.</p>
       </article>
@@ -134,16 +158,17 @@
   <section id="skills" class="reveal">
     <div class="section-head">
       <h2>Skills</h2>
-      <span class="muted">Optimization · Data Analysis· Programming/Software</span>
+      <span class="muted">Optimization · Data Analysis · Programming</span>
     </div>
+    <div class="divider"></div>
     <div class="grid">
       <div class="card">
         <h3>Optimization & OR</h3>
-        <p class="muted">MILP, Two‑Stage Stochastic Programming, Branch‑and-Cut, Branch‑and‑Price - Column Generation, Bi‑level Models, Complementarity Problems, Heuristics Algorithm, Demand Forecasting.</p>
+        <p class="muted">MILP, Two‑Stage Stochastic Programming, Branch‑and‑Cut, Branch‑and‑Price/Column Generation, Bi‑level Models, Complementarity Problems, Heuristic Search, Demand Forecasting.</p>
       </div>
       <div class="card">
         <h3>Programming & Tools</h3>
-        <p class="muted">Python, R, SQL, MATLAB, C++, Java; Pyomo; Gurobi, CPLEX; Git/GitHub; ArcGIS; TransCad; Synchro.</p>
+        <p class="muted">Python, R, SQL, MATLAB, C++, Java; Pyomo; Gurobi, CPLEX; Git/GitHub; ArcGIS; TransCAD; Synchro.</p>
       </div>
       <div class="card">
         <h3>Data Science</h3>
@@ -155,14 +180,15 @@
   <!-- PUBLICATIONS -->
   <section id="publications" class="reveal">
     <div class="section-head">
-      <h2>Publications</h2>
+      <h2>Selected Publications</h2>
       <a class="muted" href="https://scholar.google.com/citations?user=GrCwoKoAAAAJ&hl=en">Google Scholar →</a>
     </div>
+    <div class="divider"></div>
     <div class="list">
-      <div class="item"><strong>Prioritizing Bus Routes for Electrification: GIS-Based Multi-Criteria Analysis Considering Operational, Environmental, and Social Benefits and Costs</strong> · <em>Transportation Research Record</em>, 2022. <span class="muted">B. D. Emami, A. Khani, et al.</span> <a href="https://doi.org/10.1177/03611981221082565"> - Link</a></div>
-      <div class="item"><strong>Nonlinear Complementarity Model for Mixed-User Equilibrium Traffic Assignment and Mode Choice of Electric and Gasoline Vehicles</strong> · <em>Transportation Research Record</em>, 2023. <span class="muted">B. D. Emami, A. Khani</span> <a href="https://doi.org/10.1177/03611981221149433"> - Link</a></div>
-      <div class="item"><strong>Towards an efficient electric bus system: Multi-phase optimization model for incremental electrification of bus network with uncertain energy consumption</strong> · Transportation Research Part C: Emerging Technologies, 2025. <span class="muted">B. D. Emami, Y. Zhang, A. Khani, Y. Song</span> <a href="https://doi.org/10.1016/j.trc.2025.105011"> - Link</a></div>
-      <div class="item"><strong>Fleet Sizing and Scheduling of Battery Electric Buses with Limited Overnight Charging: A Spatial‑Temporal‑SOC Network Approach</strong> · SSRN working paper, 2025. <span class="muted">B. D. Emami, A. Khani, Y. Zhang</span> <a href="https://ssrn.com/abstract=5357459"> - Link</a></div>
+      <div class="item"><strong>Prioritizing Bus Routes for Electrification: GIS‑Based Multi‑Criteria Analysis Considering Operational, Environmental, and Social Benefits and Costs</strong> · <em>Transportation Research Record</em>, 2022. <span class="muted">B. D. Emami, A. Khani, et al.</span> <a href="https://doi.org/10.1177/03611981221082565"> — Link</a></div>
+      <div class="item"><strong>Nonlinear Complementarity Model for Mixed‑User Equilibrium Traffic Assignment and Mode Choice of Electric and Gasoline Vehicles</strong> · <em>Transportation Research Record</em>, 2023. <span class="muted">B. D. Emami, A. Khani</span> <a href="https://doi.org/10.1177/03611981221149433"> — Link</a></div>
+      <div class="item"><strong>Towards an efficient electric bus system: Multi‑phase optimization model for incremental electrification of bus network with uncertain energy consumption</strong> · <em>TR Part C</em>, 2025. <span class="muted">B. D. Emami, Y. Zhang, A. Khani, Y. Song</span> <a href="https://doi.org/10.1016/j.trc.2025.105011"> — Link</a></div>
+      <div class="item"><strong>Fleet Sizing and Scheduling of Battery Electric Buses with Limited Overnight Charging: A Spatial‑Temporal‑SOC Network Approach</strong> · SSRN working paper, 2025. <span class="muted">B. D. Emami, A. Khani, Y. Zhang</span> <a href="https://ssrn.com/abstract=5357459"> — Link</a></div>
     </div>
   </section>
 
@@ -172,6 +198,7 @@
       <h2>Get in touch</h2>
       <span class="muted">Available for collaboration and research</span>
     </div>
+    <div class="divider"></div>
     <div class="card">
       <p>Email: <a href="mailto:b.demami91@gmail.com">b.demami91@gmail.com</a> · <a href="https://scholar.google.com/citations?user=GrCwoKoAAAAJ&hl=en">Google Scholar</a> · <a href="https://github.com/BehnamEmami">GitHub</a> · <a href="https://www.linkedin.com/in/behnam-davazdah-emami/">LinkedIn</a></p>
     </div>
@@ -184,15 +211,45 @@
     </div>
   </footer>
 
+  <button class="totop" id="totop" aria-label="Back to top">↑</button>
+
   <script>
-    // year
+    // dynamic year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // simple scroll‑reveal
+    // scroll‑reveal + animate progress bars
     const ro = new IntersectionObserver((entries)=>{
-      for (const e of entries){ if(e.isIntersecting){ e.target.classList.add('show'); ro.unobserve(e.target); } }
-    }, {threshold:.08});
+      for (const e of entries){
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          e.target.querySelectorAll('.progress-bar').forEach(bar=>{
+            const w = bar.getAttribute('data-progress') || 100;
+            requestAnimationFrame(()=> bar.style.width = w + '%');
+          });
+          ro.unobserve(e.target);
+        }
+      }
+    }, {threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    // highlight active nav link
+    const sections = [...document.querySelectorAll('section')];
+    const links = [...document.querySelectorAll('#menu a')];
+    const so = new IntersectionObserver((ents)=>{
+      ents.forEach(ent=>{
+        if(ent.isIntersecting){
+          links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + ent.target.id));
+        }
+      })
+    }, {threshold:.35});
+    sections.forEach(s=>so.observe(s));
+
+    // back to top visibility
+    const topBtn = document.getElementById('totop');
+    window.addEventListener('scroll', ()=>{
+      if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+    });
+    topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
   </script>
 </body>
 </html>
