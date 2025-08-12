@@ -1,1 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects · Behnam Emami</title>
+  <meta name="description" content="Detailed projects by Behnam Emami" />
+  <style>
+    :root{ --bg:#0b0b0d; --bg-elev:#101013; --ink:#f4f4f5; --ink-dim:#b6b6bb; --acc:#9aa0ff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; --measure:78ch; }
+    html{scroll-behavior:smooth}
+    body{margin:0; font:15.5px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:linear-gradient(180deg, #0b0b0d, #0e0e12);} 
+    a{color:inherit; text-decoration:none}
+    .nav{position:sticky;top:0;z-index:40;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 20px;max-width:var(--max);margin:auto;background:rgba(11,11,13,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--muted)}
+    .brand{font-weight:700}
+    .pillnav{display:flex;gap:10px;flex-wrap:wrap}
+    .pillnav a{padding:8px 12px;border:1px solid var(--muted);border-radius:999px;color:var(--ink-dim)}
+    .pillnav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+    main{max-width:var(--max);margin:0 auto;padding:28px 20px 64px}
+    section{padding:28px 0}
+    h1{font-size:clamp(26px,4vw,36px);margin:6px 0 18px}
+    h2{font-size:clamp(20px,2.6vw,26px);margin:0 0 8px}
+    .card{background:var(--card);border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .meta{color:var(--ink-dim);font-size:.95em}
+    .measure{max-width:var(--measure)}
+    .back{display:inline-block;margin:10px 0 0;color:var(--ink-dim)}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html">← Behnam Emami</a>
+    <div class="pillnav">
+      <a href="#beb-scheduling">BEB Fleet Scheduling</a>
+      <a href="#stochastic-electrification">Stochastic Electrification</a>
+      <a href="#mixed-user-assignment">Mixed‑User Assignment</a>
+      <a href="#vrp-cg">VRP Column Generation</a>
+      <a href="#signals-ml">Adaptive Signals (ML)</a>
+      <a href="#flight-crew">Flight & Crew</a>
+    </div>
+  </nav>
+
+  <main>
+    <header>
+      <h1>Projects</h1>
+      <p class="meta">Click a pill to jump to a project. Each section includes problem, model, solution method, and results.</p>
+    </header>
+
+    <section id="beb-scheduling">
+      <div class="card measure">
+        <h2>BEB Fleet Sizing & Scheduling with Limited Overnight Charging</h2>
+        <p class="meta">Branch‑and‑Price · Set Partitioning · SOC Network</p>
+        <p>
+          Built a spatial–temporal–state‑of‑charge (SOC) network and a set‑partitioning master problem.
+          Pricing problem is a resource‑constrained shortest path with battery dynamics and charging arcs.
+          Added ng‑route relaxation, dual stabilization, and heuristic seeding. Solves city‑scale instances and
+          quantifies tradeoffs between fleet size and charger capacity.
+        </p>
+        <ul>
+          <li><strong>Inputs:</strong> GTFS trips/blocks, terminal transfer times, charger locations/rates, energy model.</li>
+          <li><strong>Outputs:</strong> Duty roster, charging plan, fleet size, peak power, station utilization.</li>
+          <li><strong>Methods:</strong> Column generation, strong branching, cut strengthening on infeasible patterns.</li>
+        </ul>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+    <section id="stochastic-electrification">
+      <div class="card measure">
+        <h2>Incremental Electrification under Uncertain Energy Consumption</h2>
+        <p class="meta">Two‑Stage Stochastic MILP · Benders</p>
+        <p>
+          Charger siting, fleet sizing, and operations solved as a two‑stage model with energy consumption scenarios.
+          Used Benders decomposition with Pareto‑optimal cuts and feasibility pumps. Captures maintenance impacts of fast charging and grid pressure.
+        </p>
+        <ul>
+          <li><strong>First stage:</strong> charger locations, counts, base fleet.</li>
+          <li><strong>Second stage:</strong> scenario‑specific assignments and charging operations.</li>
+        </ul>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+    <section id="mixed-user-assignment">
+      <div class="card measure">
+        <h2>Mixed‑User EV/ICE Traffic Assignment</h2>
+        <p class="meta">Logit‑based Equilibrium · Mixed Complementarity Problem</p>
+        <p>
+          Formulated a mode/route choice equilibrium with EV charging costs as an MCP. Explored policies (tolls, incentives) and network impacts.
+        </p>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+    <section id="vrp-cg">
+      <div class="card measure">
+        <h2>VRP/TSP Column Generation Toolkit</h2>
+        <p class="meta">RCSPP Pricing · ng‑routes · Stabilization</p>
+        <p>
+          Reusable pricing engine with resource constraints (time windows, capacity). Implements dual stabilization, adaptive labelling, and cut pools.
+        </p>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+    <section id="signals-ml">
+      <div class="card measure">
+        <h2>Adaptive Signal Coordination using ML</h2>
+        <p class="meta">TMC + Probe Fusion · Plan Recommender</p>
+        <p>Estimates turn movements and cycle splits from probe and TMC data, then recommends timing plans with operational constraints.</p>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+    <section id="flight-crew">
+      <div class="card measure">
+        <h2>Integrated Flight Scheduling with Crew Legality</h2>
+        <p class="meta">3D Space‑Time‑Maintenance Network · Decomposition</p>
+        <p>Multi‑day scheduling with maintenance windows and crew duty limits. Prototype uses Lagrangian relaxation and column‑generation‑style subproblems.</p>
+        <a class="back" href="#top">Back to top ↑</a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
 
