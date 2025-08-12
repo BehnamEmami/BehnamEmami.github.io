@@ -18,6 +18,15 @@
     .measure{max-width:var(--measure)}
 
     /* NAV */
+    .dropdown{position:relative}
+    .dropdown-menu{display:none; position:absolute; top:100%; left:0; min-width:240px; padding:8px; margin-top:8px; background:var(--bg-elev); border:1px solid var(--muted); border-radius:12px; box-shadow:var(--shadow)}
+    .dropdown-menu li{list-style:none}
+    .dropdown-menu a{display:block; padding:8px 10px; border-radius:8px}
+    .dropdown-menu a:hover{background:rgba(255,255,255,.06)}
+    .dropdown:hover .dropdown-menu{display:block}
+    @media(max-width:900px){ .dropdown-menu{position:fixed; left:12px; right:12px} } 
+
+    /* NAV */
     .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.82);border-bottom:1px solid var(--muted)}
     .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
     .brand{font-weight:700;letter-spacing:.2px}
@@ -106,7 +115,14 @@
       <a class="brand" href="#top">Behnam Emami</a>
       <div class="menu" id="menu">
         <a href="#education">Education</a>
-        <a href="#work">Work</a>
+        <div class="dropdown"><a href="#projects">Projects</a><ul class="dropdown-menu" id="projMenu">
+          <li><a href="projects.html#beb-scheduling">BEB Fleet Scheduling</a></li>
+          <li><a href="projects.html#stochastic-electrification">Stochastic Electrification</a></li>
+          <li><a href="projects.html#mixed-user-assignment">Mixed‑User Assignment</a></li>
+          <li><a href="projects.html#vrp-cg">VRP Column Generation</a></li>
+          <li><a href="projects.html#signals-ml">Adaptive Signals (ML)</a></li>
+          <li><a href="projects.html#flight-crew">Flight & Crew Scheduling</a></li>
+        </ul></div>
         <a href="#publications">Selected Publications</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
@@ -167,28 +183,43 @@
     </div>
   </section>
 
-  <!-- WORK -->
-  <section id="work" class="reveal swipe-left">
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
     <div class="section-head">
-      <h2>Selected work</h2>
-      <div class="muted">Operations Research · Electric Transit · Electric Freight · Network Modeling</div>
+      <h2>Projects</h2>
+      <div class="muted">Click any project to see full details</div>
     </div>
     <div class="divider"></div>
     <div class="grid">
       <article class="card">
-        <div class="chip">Branch‑and‑Price · Time Windows · Set Partitioning</div>
-        <h3>Fleet sizing & scheduling with limited overnight charging</h3>
-        <p class="muted">Spatial–temporal–state‑of‑charge network; exact column generation to solve real‑scale networks.</p>
+        <div class="chip">BEB · Branch‑and‑Price</div>
+        <h3><a href="projects.html#beb-scheduling">Fleet sizing & scheduling with limited overnight charging</a></h3>
+        <p class="muted">Spatial–temporal–SOC network; exact column generation to solve city‑scale instances. Reduces peak chargers and fleet size with smart duty cycles.</p>
       </article>
       <article class="card">
-        <div class="chip">Stochastic MILP · Benders · Branch‑and‑Cut</div>
-        <h3>Incremental electrification under uncertain energy use</h3>
-        <p class="muted">Two‑stage model for siting chargers, sizing fleet, and charging operations; Benders decomposition + Branch‑and‑Cut.</p>
+        <div class="chip">Stochastic MILP · Benders</div>
+        <h3><a href="projects.html#stochastic-electrification">Incremental electrification under uncertain energy use</a></h3>
+        <p class="muted">Two‑stage model for siting chargers and operations under consumption uncertainty; Benders + cuts; quantifies maintenance & grid impacts.</p>
       </article>
       <article class="card">
-        <div class="chip">Multi‑Class Assignment · Complementarity</div>
-        <h3>Mixed‑user EV/ICE assignment</h3>
-        <p class="muted">Logit‑based multimodal assignment formulated as a mixed complementarity problem.</p>
+        <div class="chip">Traffic Assignment · MCP</div>
+        <h3><a href="projects.html#mixed-user-assignment">Mixed‑user EV/ICE assignment</a></h3>
+        <p class="muted">Logit‑based multimodal equilibrium as an MCP; solves mixed fuel user equilibrium and policy experiments (tolls, incentives).</p>
+      </article>
+      <article class="card">
+        <div class="chip">VRP · Column Generation</div>
+        <h3><a href="projects.html#vrp-cg">VRP/TSP pricing toolkit</a></h3>
+        <p class="muted">Resource‑constrained shortest path pricing with ng‑routes, stabilization, and fast heuristics; warm‑starts & strong branching.</p>
+      </article>
+      <article class="card">
+        <div class="chip">Signals · ML</div>
+        <h3><a href="projects.html#signals-ml">Adaptive signal coordination</a></h3>
+        <p class="muted">Turning movement estimation from probe+TMC; plan recommender honoring cycle/phase constraints; deployable at corridor scale.</p>
+      </article>
+      <article class="card">
+        <div class="chip">Aviation · Integrated</div>
+        <h3><a href="projects.html#flight-crew">Flight scheduling with crew</a></h3>
+        <p class="muted">3D space‑time‑maintenance network with crew legality; decomposition and Lagrangian relaxation for multi‑day schedules.</p>
       </article>
     </div>
   </section>
