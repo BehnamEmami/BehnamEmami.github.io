@@ -9,34 +9,39 @@
   <style>
     :root{ --bg:#0b0b0d; --bg-elev:#101013; --ink:#f4f4f5; --ink-dim:#b6b6bb; --acc:#9aa0ff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; --measure:72ch; }
     html{scroll-behavior:smooth}
-    body{margin:0; font: 15.5px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:
-      radial-gradient(1200px 600px at 70% -10%, rgba(154,160,255,.10), transparent 60%),
-      linear-gradient(180deg, #0b0b0d 0%, #0b0b0d 30%, #0e0e12 100%);} 
+    body{
+      margin:0; font: 15.5px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink);
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(154,160,255,.10), transparent 60%), linear-gradient(180deg,#0b0b0d 0%,#0b0b0d 30%,#0e0e12 100%);
+    }
     a{color:inherit; text-decoration:none}
     a:focus{outline:2px solid var(--acc); outline-offset:3px; border-radius:6px}
     img{max-width:100%; display:block}
     .measure{max-width:var(--measure)}
 
-    /* NAV */
+    /* NAV (aligned, dropdown-friendly) */
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.82);border-bottom:1px solid var(--muted)}
+    .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    .menu{display:flex;gap:20px;align-items:center}
+    .menu > a, .menu > .dropdown{display:inline-flex;align-items:center;height:40px}
+    .menu a{color:var(--ink-dim);position:relative;display:inline-flex;align-items:center;height:40px;padding:0 10px;line-height:1}
+    .menu a::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:2px;background:transparent;transform:scaleX(0);transition:transform .25s ease, background .25s ease}
+    .menu a:hover{color:var(--ink)}
+    .menu a:hover::after{background:var(--ink);transform:scaleX(1)}
+    .menu a.active{color:var(--ink)}
+    .menu a.active::after{background:var(--acc);transform:scaleX(1)}
+
     .dropdown{position:relative}
-    .dropdown-menu{display:none; position:absolute; top:100%; left:0; min-width:240px; padding:8px; margin-top:8px; background:var(--bg-elev); border:1px solid var(--muted); border-radius:12px; box-shadow:var(--shadow)}
+    .dropdown > a{cursor:pointer}
+    .dropdown-menu{
+      display:none; position:absolute; top:100%; left:0; min-width:240px; padding:8px; margin-top:8px;
+      background:var(--bg-elev); border:1px solid var(--muted); border-radius:12px; box-shadow:var(--shadow)
+    }
     .dropdown-menu li{list-style:none}
     .dropdown-menu a{display:block; padding:8px 10px; border-radius:8px}
     .dropdown-menu a:hover{background:rgba(255,255,255,.06)}
     .dropdown:hover .dropdown-menu{display:block}
-    @media(max-width:900px){ .dropdown-menu{position:fixed; left:12px; right:12px} } 
-
-    /* NAV */
-    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.82);border-bottom:1px solid var(--muted)}
-    .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
-    .brand{font-weight:700;letter-spacing:.2px}
-    .menu{display:flex;gap:20px}
-    .menu a{color:var(--ink-dim); position:relative; padding:6px 2px}
-    .menu a::after{content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:transparent; transform:scaleX(0); transition:transform .25s ease, background .25s ease}
-    .menu a:hover{color:var(--ink)}
-    .menu a:hover::after{background:var(--ink); transform:scaleX(1)}
-    .menu a.active{color:var(--ink)}
-    .menu a.active::after{background:var(--acc); transform:scaleX(1)}
+    @media(max-width:900px){ .dropdown-menu{position:fixed; left:12px; right:12px} }
 
     /* HERO */
     header.hero{max-width:var(--max);margin:0 auto;padding:110px 22px 64px}
@@ -51,7 +56,7 @@
     .muted{color:var(--ink-dim)}
     .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:12px 0 36px}
 
-    /* CARDS */
+    /* GRID/CARDS */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
     .card{grid-column:span 12;padding:24px;background:linear-gradient(180deg, color-mix(in oklab, var(--card), black 6%), var(--card));border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow); transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease}
     .card:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.56); border-color:color-mix(in oklab, var(--muted), var(--acc) 20%)}
@@ -68,6 +73,11 @@
     .titem::before{content:""; position:absolute; left:-19px; top:22px; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 4px rgba(154,160,255,.15)}
     .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:10px;margin-top:10px}
     .progress-bar{height:10px;background:linear-gradient(90deg, var(--acc), #c2c6ff);width:0}
+    /* One-line degree row */
+    .edu-row{display:flex; align-items:baseline; justify-content:space-between; gap:12px; white-space:nowrap}
+    .edu-left{overflow:hidden; text-overflow:ellipsis}
+    .edu-right{white-space:nowrap; color:var(--ink-dim); flex:0 0 auto}
+    @media (max-width:680px){ .edu-row{flex-wrap:wrap; white-space:normal} .edu-right{margin-top:4px} }
 
     /* LIST */
     .list{display:flex;flex-direction:column;gap:14px}
@@ -77,11 +87,9 @@
     footer{padding:80px 22px 104px;color:var(--ink-dim);border-top:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
     .foot{max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
 
-    /* REVEAL BASE */
+    /* REVEAL BASE + VARIANTS */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
     .reveal.show{opacity:1;transform:none}
-
-    /* REVEAL VARIANTS */
     .turn{transform:perspective(900px) rotateX(8deg) translateY(24px); transform-origin:50% 100%;}
     .turn.show{transform:perspective(900px) rotateX(0) translateY(0)}
     .swipe-left{transform:translateX(30px);}
@@ -98,11 +106,6 @@
     .scrollbar{position:fixed; left:10px; top:64px; bottom:24px; width:6px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; z-index:60}
     .scrollbar .fill{position:absolute; left:0; bottom:0; width:100%; height:0; background:linear-gradient(180deg, var(--acc), #c2c6ff)}
     @media(max-width:900px){ .scrollbar{display:none} }
-      /* One-line degree row */
-    .edu-row{display:flex; align-items:baseline; justify-content:space-between; gap:12px; white-space:nowrap}
-    .edu-left{overflow:hidden; text-overflow:ellipsis}
-    .edu-right{white-space:nowrap; color:var(--ink-dim); flex:0 0 auto}
-    @media (max-width:680px){ .edu-row{flex-wrap:wrap; white-space:normal} .edu-right{margin-top:4px} }
   </style>
 </head>
 <body>
@@ -114,17 +117,22 @@
     <nav class="nav">
       <a class="brand" href="#top">Behnam Emami</a>
       <div class="menu" id="menu">
+        <a href="#top">Home</a>
         <a href="#education">Education</a>
-        <div class="dropdown"><a href="#projects">Projects</a><ul class="dropdown-menu" id="projMenu">
-          <li><a href="projects.html#beb-scheduling">BEB Fleet Scheduling</a></li>
-          <li><a href="projects.html#stochastic-electrification">Stochastic Electrification</a></li>
-          <li><a href="projects.html#mixed-user-assignment">Mixed‑User Assignment</a></li>
-          <li><a href="projects.html#vrp-cg">VRP Column Generation</a></li>
-          <li><a href="projects.html#signals-ml">Adaptive Signals (ML)</a></li>
-          <li><a href="projects.html#flight-crew">Flight & Crew Scheduling</a></li>
-        </ul></div>
-        <a href="#publications">Selected Publications</a>
+        <div class="dropdown">
+          <a href="#projects">Projects</a>
+          <ul class="dropdown-menu" id="projMenu">
+            <li><a href="projects.html#beb-scheduling">BEB Fleet Scheduling</a></li>
+            <li><a href="projects.html#stochastic-electrification">Stochastic Electrification</a></li>
+            <li><a href="projects.html#mixed-user-assignment">Mixed-User Assignment</a></li>
+            <li><a href="projects.html#vrp-cg">VRP Column Generation</a></li>
+            <li><a href="projects.html#signals-ml">Adaptive Signals (ML)</a></li>
+            <li><a href="projects.html#flight-crew">Flight & Crew Scheduling</a></li>
+          </ul>
+        </div>
+        <a href="#publications">Publications</a>
         <a href="#skills">Skills</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a class="chip" href="assets/docs/resume.pdf">CV</a>
       </div>
@@ -192,24 +200,24 @@
     <div class="divider"></div>
     <div class="grid">
       <article class="card">
-        <div class="chip">BEB · Branch‑and‑Price</div>
+        <div class="chip">BEB · Branch-and-Price</div>
         <h3><a href="projects.html#beb-scheduling">Fleet sizing & scheduling with limited overnight charging</a></h3>
-        <p class="muted">Spatial–temporal–SOC network; exact column generation to solve city‑scale instances. Reduces peak chargers and fleet size with smart duty cycles.</p>
+        <p class="muted">Spatial–temporal–SOC network; exact column generation to solve city-scale instances. Reduces peak chargers and fleet size with smart duty cycles.</p>
       </article>
       <article class="card">
         <div class="chip">Stochastic MILP · Benders</div>
         <h3><a href="projects.html#stochastic-electrification">Incremental electrification under uncertain energy use</a></h3>
-        <p class="muted">Two‑stage model for siting chargers and operations under consumption uncertainty; Benders + cuts; quantifies maintenance & grid impacts.</p>
+        <p class="muted">Two-stage model for siting chargers and operations under consumption uncertainty; Benders + cuts; quantifies maintenance & grid impacts.</p>
       </article>
       <article class="card">
         <div class="chip">Traffic Assignment · MCP</div>
-        <h3><a href="projects.html#mixed-user-assignment">Mixed‑user EV/ICE assignment</a></h3>
-        <p class="muted">Logit‑based multimodal equilibrium as an MCP; solves mixed fuel user equilibrium and policy experiments (tolls, incentives).</p>
+        <h3><a href="projects.html#mixed-user-assignment">Mixed-user EV/ICE assignment</a></h3>
+        <p class="muted">Logit-based multimodal equilibrium as an MCP; solves mixed fuel user equilibrium and policy experiments (tolls, incentives).</p>
       </article>
       <article class="card">
         <div class="chip">VRP · Column Generation</div>
         <h3><a href="projects.html#vrp-cg">VRP/TSP pricing toolkit</a></h3>
-        <p class="muted">Resource‑constrained shortest path pricing with ng‑routes, stabilization, and fast heuristics; warm‑starts & strong branching.</p>
+        <p class="muted">Resource-constrained shortest path pricing with ng-routes, stabilization, and fast heuristics; warm-starts & strong branching.</p>
       </article>
       <article class="card">
         <div class="chip">Signals · ML</div>
@@ -219,7 +227,7 @@
       <article class="card">
         <div class="chip">Aviation · Integrated</div>
         <h3><a href="projects.html#flight-crew">Flight scheduling with crew</a></h3>
-        <p class="muted">3D space‑time‑maintenance network with crew legality; decomposition and Lagrangian relaxation for multi‑day schedules.</p>
+        <p class="muted">3D space-time-maintenance network with crew legality; decomposition and Lagrangian relaxation for multi-day schedules.</p>
       </article>
     </div>
   </section>
@@ -234,7 +242,7 @@
     <div class="grid">
       <div class="card">
         <h3>Optimization & OR</h3>
-        <p class="muted">MILP, Two‑Stage Stochastic Programming, Branch‑and‑Cut, Branch‑and‑Price/Column Generation, Bi‑level Models, Complementarity Problems, Heuristic Search, Demand Forecasting.</p>
+        <p class="muted">MILP, Two-Stage Stochastic Programming, Branch-and-Cut, Branch-and-Price/Column Generation, Bi-level Models, Complementarity Problems, Heuristic Search, Demand Forecasting.</p>
       </div>
       <div class="card">
         <h3>Programming & Tools</h3>
@@ -242,7 +250,7 @@
       </div>
       <div class="card">
         <h3>Data Science</h3>
-        <p class="muted">pandas, NumPy, scikit‑learn, Statistical Modeling, Data Visualization, Tableau; documentation in LaTeX & MS Office.</p>
+        <p class="muted">pandas, NumPy, scikit-learn, Statistical Modeling, Data Visualization, Tableau; documentation in LaTeX & MS Office.</p>
       </div>
     </div>
   </section>
@@ -250,15 +258,31 @@
   <!-- PUBLICATIONS -->
   <section id="publications" class="reveal turn">
     <div class="section-head">
-      <h2>Selected Publications</h2>
+      <h2>Publications</h2>
       <a class="muted" href="https://scholar.google.com/citations?user=GrCwoKoAAAAJ&hl=en">Google Scholar →</a>
     </div>
     <div class="divider"></div>
     <div class="list">
-      <div class="item"><strong>Prioritizing Bus Routes for Electrification: GIS‑Based Multi‑Criteria Analysis Considering Operational, Environmental, and Social Benefits and Costs</strong> · <em>Transportation Research Record</em>, 2022. <span class="muted">B. D. Emami, A. Khani, et al.</span> <a href="https://doi.org/10.1177/03611981221082565"> — Link</a></div>
-      <div class="item"><strong>Nonlinear Complementarity Model for Mixed‑User Equilibrium Traffic Assignment and Mode Choice of Electric and Gasoline Vehicles</strong> · <em>Transportation Research Record</em>, 2023. <span class="muted">B. D. Emami, A. Khani</span> <a href="https://doi.org/10.1177/03611981221149433"> — Link</a></div>
-      <div class="item"><strong>Towards an efficient electric bus system: Multi‑phase optimization model for incremental electrification of bus network with uncertain energy consumption</strong> · <em>TR Part C</em>, 2025. <span class="muted">B. D. Emami, Y. Zhang, A. Khani, Y. Song</span> <a href="https://doi.org/10.1016/j.trc.2025.105011"> — Link</a></div>
-      <div class="item"><strong>Fleet Sizing and Scheduling of Battery Electric Buses with Limited Overnight Charging: A Spatial‑Temporal‑SOC Network Approach</strong> · SSRN working paper, 2025. <span class="muted">B. D. Emami, A. Khani, Y. Zhang</span> <a href="https://ssrn.com/abstract=5357459"> — Link</a></div>
+      <div class="item"><strong>Prioritizing Bus Routes for Electrification: GIS-Based Multi-Criteria Analysis Considering Operational, Environmental, and Social Benefits and Costs</strong> · <em>Transportation Research Record</em>, 2022. <span class="muted">B. D. Emami, A. Khani, et al.</span> <a href="https://doi.org/10.1177/03611981221082565"> — Link</a></div>
+      <div class="item"><strong>Nonlinear Complementarity Model for Mixed-User Equilibrium Traffic Assignment and Mode Choice of Electric and Gasoline Vehicles</strong> · <em>Transportation Research Record</em>, 2023. <span class="muted">B. D. Emami, A. Khani</span> <a href="https://doi.org/10.1177/03611981221149433"> — Link</a></div>
+      <div class="item"><strong>Towards an efficient electric bus system: Multi-phase optimization model for incremental electrification of bus network with uncertain energy consumption</strong> · <em>TR Part C</em>, 2025. <span class="muted">B. D. Emami, Y. Zhang, A. Khani, Y. Song</span> <a href="https://doi.org/10.1016/j.trc.2025.105011"> — Link</a></div>
+      <div class="item"><strong>Fleet Sizing and Scheduling of Battery Electric Buses with Limited Overnight Charging: A Spatial-Temporal-SOC Network Approach</strong> · SSRN working paper, 2025. <span class="muted">B. D. Emami, A. Khani, Y. Zhang</span> <a href="https://ssrn.com/abstract=5357459"> — Link</a></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal swipe-left">
+    <div class="section-head">
+      <h2>About Me</h2>
+      <span class="muted">A quick introduction</span>
+    </div>
+    <div class="divider"></div>
+    <div class="card">
+      <p class="measure">
+        I’m a transportation engineer focused on optimization and data-driven planning for electric transit systems and network operations.
+        My work spans battery-electric bus scheduling and fleet sizing, stochastic infrastructure planning, multi-class traffic assignment,
+        and operations research tooling (VRP column generation, decomposition). I enjoy turning hard problems into deployable, elegant models and software.
+      </p>
     </div>
   </section>
 
@@ -287,7 +311,7 @@
     // dynamic year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // scroll‑reveal + animate progress bars
+    // scroll-reveal + animate progress bars
     const ro = new IntersectionObserver((entries)=>{
       for (const e of entries){
         if(e.isIntersecting){
@@ -316,21 +340,29 @@
 
     // back to top visibility
     const topBtn = document.getElementById('totop');
-    window.addEventListener('scroll', ()=>{
-      if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show');
-    });
+    window.addEventListener('scroll', ()=>{ if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show'); });
     topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
     // vertical strip progress (fills on scroll down, reduces on scroll up)
     const fill = document.getElementById('scrollFill');
-    const onScroll = ()=>{
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = Math.max(0, Math.min(1, window.scrollY / docH));
-      fill.style.height = (scrolled * 100) + '%';
-    };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll);
-    onScroll();
+    const onScroll = ()=>{ const docH = document.documentElement.scrollHeight - window.innerHeight; const scrolled = Math.max(0, Math.min(1, window.scrollY / docH)); fill.style.height = (scrolled * 100) + '%'; };
+    window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll); onScroll();
+
+    // mobile-friendly dropdown: first tap opens, second tap follows link
+    const dd = document.querySelector('.dropdown');
+    if (dd) {
+      const trig = dd.querySelector('a');
+      let opened = false;
+      trig.addEventListener('click', (e) => {
+        const isHoverable = window.matchMedia('(hover: hover)').matches;
+        if (isHoverable) return; // desktops use hover
+        if (!opened) { e.preventDefault(); dd.querySelector('.dropdown-menu').style.display = 'block'; opened = true; }
+        else { opened = false; }
+      });
+      document.addEventListener('click', (e)=>{
+        if (!dd.contains(e.target)) { const m=dd.querySelector('.dropdown-menu'); if(m) m.style.display='none'; opened=false; }
+      });
+    }
   </script>
 </body>
 </html>
