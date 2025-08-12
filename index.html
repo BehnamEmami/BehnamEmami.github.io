@@ -9,7 +9,7 @@
   <style>
     :root{ --bg:#0b0b0d; --bg-elev:#101013; --ink:#f4f4f5; --ink-dim:#b6b6bb; --acc:#9aa0ff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; --measure:72ch; }
     html{scroll-behavior:smooth}
-    body{margin:0; font: 15.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:
+    body{margin:0; font: 15.5px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:
       radial-gradient(1200px 600px at 70% -10%, rgba(154,160,255,.10), transparent 60%),
       linear-gradient(180deg, #0b0b0d 0%, #0b0b0d 30%, #0e0e12 100%);} 
     a{color:inherit; text-decoration:none}
@@ -19,9 +19,9 @@
 
     /* NAV */
     .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(11,11,13,.82);border-bottom:1px solid var(--muted)}
-    .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
     .brand{font-weight:700;letter-spacing:.2px}
-    .menu{display:flex;gap:18px}
+    .menu{display:flex;gap:20px}
     .menu a{color:var(--ink-dim); position:relative; padding:6px 2px}
     .menu a::after{content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:transparent; transform:scaleX(0); transition:transform .25s ease, background .25s ease}
     .menu a:hover{color:var(--ink)}
@@ -30,22 +30,22 @@
     .menu a.active::after{background:var(--acc); transform:scaleX(1)}
 
     /* HERO */
-    header.hero{max-width:var(--max);margin:0 auto;padding:84px 20px 44px}
+    header.hero{max-width:var(--max);margin:0 auto;padding:110px 22px 64px}
     .eyebrow{color:var(--ink-dim);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.73rem}
     .display{font-size:clamp(34px, 6vw, 58px); line-height:1.08; font-weight:760; letter-spacing:-.01em; margin:.35em 0}
     .lead{font-size:clamp(16px, 2.1vw, 18px); color:var(--ink-dim)}
 
     /* SECTION */
-    section{max-width:var(--max);margin:0 auto;padding:48px 20px; position:relative}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}
+    section{max-width:var(--max);margin:0 auto;padding:96px 22px; position:relative}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
     h2{font-size:clamp(22px,2.5vw,28px);margin:0;letter-spacing:.2px}
     .muted{color:var(--ink-dim)}
-    .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:8px 0 28px}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:12px 0 36px}
 
     /* CARDS */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{grid-column:span 12;padding:22px;background:linear-gradient(180deg, color-mix(in oklab, var(--card), black 6%), var(--card));border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-    .card:hover{transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,.55); border-color:color-mix(in oklab, var(--muted), var(--acc) 20%)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+    .card{grid-column:span 12;padding:24px;background:linear-gradient(180deg, color-mix(in oklab, var(--card), black 6%), var(--card));border:1px solid color-mix(in oklab, var(--muted), transparent 30%);border-radius:var(--radius);box-shadow:var(--shadow); transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease}
+    .card:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.56); border-color:color-mix(in oklab, var(--muted), var(--acc) 20%)}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab, var(--muted), transparent 45%);color:var(--ink-dim);font-size:12px}
     .card h3{margin:0 0 6px;font-size:18px; letter-spacing:.2px}
     .card p{max-width:var(--measure)}
@@ -53,32 +53,48 @@
     @media(min-width:1024px){.card{grid-column:span 4}}
 
     /* TIMELINE (Education) */
-    .timeline{position:relative; padding-left:24px}
+    .timeline{position:relative; padding-left:26px}
     .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(#2e2e33, #3a3a41)}
-    .titem{position:relative; margin:16px 0; padding:18px 18px 16px; background:var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 25%); border-radius:16px; box-shadow:var(--shadow)}
+    .titem{position:relative; margin:22px 0; padding:20px 20px 18px; background:var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 25%); border-radius:16px; box-shadow:var(--shadow)}
     .titem::before{content:""; position:absolute; left:-19px; top:22px; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 4px rgba(154,160,255,.15)}
-    .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:10px;margin-top:8px}
+    .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:10px;margin-top:10px}
     .progress-bar{height:10px;background:linear-gradient(90deg, var(--acc), #c2c6ff);width:0}
 
     /* LIST */
-    .list{display:flex;flex-direction:column;gap:12px}
-    .list .item{padding:16px 18px;border-radius:14px;border:1px solid color-mix(in oklab, var(--muted), transparent 35%);background:var(--card)}
+    .list{display:flex;flex-direction:column;gap:14px}
+    .list .item{padding:18px 20px;border-radius:14px;border:1px solid color-mix(in oklab, var(--muted), transparent 35%);background:var(--card)}
 
     /* FOOTER */
-    footer{padding:64px 20px 88px;color:var(--ink-dim);border-top:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
+    footer{padding:80px 22px 104px;color:var(--ink-dim);border-top:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
     .foot{max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
 
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
+    /* REVEAL BASE */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* REVEAL VARIANTS */
+    .turn{transform:perspective(900px) rotateX(8deg) translateY(24px); transform-origin:50% 100%;}
+    .turn.show{transform:perspective(900px) rotateX(0) translateY(0)}
+    .swipe-left{transform:translateX(30px);}
+    .swipe-left.show{transform:translateX(0)}
+    .swipe-up{transform:translateY(40px);}
+    .swipe-up.show{transform:translateY(0)}
 
     /* BACK TO TOP */
     .totop{position:fixed; right:18px; bottom:18px; padding:10px 12px; border-radius:999px; border:1px solid color-mix(in oklab, var(--muted), transparent 35%); background:var(--bg-elev); color:var(--ink-dim); cursor:pointer; opacity:.0; pointer-events:none; transition:opacity .3s ease, transform .2s ease}
     .totop.show{opacity:.95; pointer-events:auto}
     .totop:hover{transform:translateY(-2px); color:var(--ink)}
+
+    /* VERTICAL SCROLL STRIP */
+    .scrollbar{position:fixed; left:10px; top:64px; bottom:24px; width:6px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; z-index:60}
+    .scrollbar .fill{position:absolute; left:0; bottom:0; width:100%; height:0; background:linear-gradient(180deg, var(--acc), #c2c6ff)}
+    @media(max-width:900px){ .scrollbar{display:none} }
   </style>
 </head>
 <body>
+  <!-- VERTICAL SCROLL STRIP -->
+  <div class="scrollbar" aria-hidden="true"><div class="fill" id="scrollFill"></div></div>
+
   <!-- NAV -->
   <div class="nav-wrap">
     <nav class="nav">
@@ -86,8 +102,8 @@
       <div class="menu" id="menu">
         <a href="#education">Education</a>
         <a href="#work">Work</a>
-        <a href="#skills">Skills</a>
         <a href="#publications">Selected Publications</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
         <a class="chip" href="assets/docs/resume.pdf">CV</a>
       </div>
@@ -102,7 +118,7 @@
   </header>
 
   <!-- EDUCATION -->
-  <section id="education" class="reveal">
+  <section id="education" class="reveal turn">
     <div class="section-head">
       <h2>Education</h2>
       <span class="muted">All degrees completed</span>
@@ -129,7 +145,7 @@
   </section>
 
   <!-- WORK -->
-  <section id="work" class="reveal">
+  <section id="work" class="reveal swipe-left">
     <div class="section-head">
       <h2>Selected work</h2>
       <div class="muted">Operations Research · Electric Transit · Electric Freight · Network Modeling</div>
@@ -155,7 +171,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="reveal">
+  <section id="skills" class="reveal swipe-up">
     <div class="section-head">
       <h2>Skills</h2>
       <span class="muted">Optimization · Data Analysis · Programming</span>
@@ -178,7 +194,7 @@
   </section>
 
   <!-- PUBLICATIONS -->
-  <section id="publications" class="reveal">
+  <section id="publications" class="reveal turn">
     <div class="section-head">
       <h2>Selected Publications</h2>
       <a class="muted" href="https://scholar.google.com/citations?user=GrCwoKoAAAAJ&hl=en">Google Scholar →</a>
@@ -193,7 +209,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="reveal">
+  <section id="contact" class="reveal swipe-left">
     <div class="section-head">
       <h2>Get in touch</h2>
       <span class="muted">Available for collaboration and research</span>
@@ -229,7 +245,7 @@
           ro.unobserve(e.target);
         }
       }
-    }, {threshold:.12});
+    }, {threshold:.14});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
     // highlight active nav link
@@ -250,6 +266,17 @@
       if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show');
     });
     topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // vertical strip progress (fills on scroll down, reduces on scroll up)
+    const fill = document.getElementById('scrollFill');
+    const onScroll = ()=>{
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = Math.max(0, Math.min(1, window.scrollY / docH));
+      fill.style.height = (scrolled * 100) + '%';
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
   </script>
 </body>
 </html>
