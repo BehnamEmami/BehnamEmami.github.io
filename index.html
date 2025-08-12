@@ -89,6 +89,11 @@
     .scrollbar{position:fixed; left:10px; top:64px; bottom:24px; width:6px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; z-index:60}
     .scrollbar .fill{position:absolute; left:0; bottom:0; width:100%; height:0; background:linear-gradient(180deg, var(--acc), #c2c6ff)}
     @media(max-width:900px){ .scrollbar{display:none} }
+      /* One-line degree row */
+    .edu-row{display:flex; align-items:baseline; justify-content:space-between; gap:12px; white-space:nowrap}
+    .edu-left{overflow:hidden; text-overflow:ellipsis}
+    .edu-right{white-space:nowrap; color:var(--ink-dim); flex:0 0 auto}
+    @media (max-width:680px){ .edu-row{flex-wrap:wrap; white-space:normal} .edu-right{margin-top:4px} }
   </style>
 </head>
 <body>
@@ -102,8 +107,8 @@
       <div class="menu" id="menu">
         <a href="#education">Education</a>
         <a href="#work">Work</a>
+        <a href="#publications">Selected Publications</a>
         <a href="#skills">Skills</a>
-        <a href="#publications">Publications</a>        
         <a href="#contact">Contact</a>
         <a class="chip" href="assets/docs/resume.pdf">CV</a>
       </div>
@@ -119,58 +124,48 @@
 
   <!-- EDUCATION -->
   <section id="education" class="reveal turn">
-  <div class="section-head">
-    <h2>Education</h2>
-    <span class="muted">All degrees completed</span>
-  </div>
-  <div class="divider"></div>
-  <div class="timeline">
-
-    <div class="titem">
-      <p class="measure degree-line">
-        <span><strong>Ph.D. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN</span>
-        <span class="year">(Jan 2020 – May 2025)</span>
-      </p>
-      <p class="measure">
-        <em>A Comprehensive Framework for Electric Bus Transit Systems: Strategic Infrastructure Planning, Tactical Scheduling, and Operational Energy Management</em><br>
-        Advisor: Dr. Alireza Khani
-      </p>
-      <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+    <div class="section-head">
+      <h2>Education</h2>
+      <span class="muted">All degrees completed</span>
     </div>
-
-    <div class="titem">
-      <p class="measure degree-line">
-        <span><strong>M.S. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN</span>
-        <span class="year">(Jan 2020 – May 2023)</span>
-      </p>
-      <p class="measure">
-        Advisor: Dr. Alireza Khani
-      </p>
-      <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="titem">
+        <p class="edu-row">
+          <span class="edu-left"><strong>Ph.D. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN</span>
+          <span class="edu-right">(Jan 2020 – May 2025)</span>
+        </p>
+        <p class="measure">
+          <em>A Comprehensive Framework for Electric Bus Transit Systems: Strategic Infrastructure Planning, Tactical Scheduling, and Operational Energy Management</em><br>
+          Advisor: Dr. Alireza Khani
+        </p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="edu-row">
+          <span class="edu-left"><strong>M.S. in Transportation Engineering</strong>, University of Minnesota, Minneapolis, MN</span>
+          <span class="edu-right">(Jan 2020 – May 2023)</span>
+        </p>
+        <p class="measure">Advisor: Dr. Alireza Khani</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="edu-row">
+          <span class="edu-left"><strong>M.S. in Transportation Engineering</strong>, Sharif University of Technology, Tehran, Iran</span>
+          <span class="edu-right">(Sep 2015 – Jan 2018)</span>
+        </p>
+        <p class="measure">Advisor: Prof. Hedayat Ashtiani</p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
+      <div class="titem">
+        <p class="edu-row">
+          <span class="edu-left"><strong>B.S. in Civil Engineering</strong>, Amirkabir University of Technology, Tehran, Iran</span>
+          <span class="edu-right">(Sep 2009 – Jan 2013)</span>
+        </p>
+        <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
+      </div>
     </div>
-
-    <div class="titem">
-      <p class="measure degree-line">
-        <span><strong>M.S. in Transportation Engineering</strong>, Sharif University of Technology, Tehran, Iran</span>
-        <span class="year">(Sep 2015 – Jan 2018)</span>
-      </p>
-      <p class="measure">
-        Advisor: Prof. Hedayat Ashtiani
-      </p>
-      <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
-    </div>
-
-    <div class="titem">
-      <p class="measure degree-line">
-        <span><strong>B.S. in Civil Engineering</strong>, Amirkabir University of Technology, Tehran, Iran</span>
-        <span class="year">(Sep 2009 – Jan 2013)</span>
-      </p>
-      <div class="progress"><div class="progress-bar" data-progress="100"></div></div>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <!-- WORK -->
   <section id="work" class="reveal swipe-left">
