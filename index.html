@@ -1,20 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYN4Z88H0S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-JYN4Z88H0S');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Behnam Emami · Portfolio</title>
   <meta name="description" content="Portfolio and projects of Behnam Emami — Transportation Engineer · Optimization · Data Science" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYN4Z88H0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JYN4Z88H0S');
+  </script>
+
   <style>
     :root{ --bg:#0b0b0d; --bg-elev:#101013; --ink:#f4f4f5; --ink-dim:#b6b6bb; --acc:#9aa0ff; --muted:#2a2a2f; --card:#0f0f12; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1120px; --measure:72ch; }
     html{scroll-behavior:smooth}
@@ -82,7 +83,6 @@
     .titem::before{content:""; position:absolute; left:-19px; top:22px; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 4px rgba(154,160,255,.15)}
     .progress{background:var(--muted);border-radius:10px;overflow:hidden;height:10px;margin-top:10px}
     .progress-bar{height:10px;background:linear-gradient(90deg, var(--acc), #c2c6ff);width:0}
-    /* One-line degree row */
     .edu-row{display:flex; align-items:baseline; justify-content:space-between; gap:12px; white-space:nowrap}
     .edu-left{overflow:hidden; text-overflow:ellipsis}
     .edu-right{white-space:nowrap; color:var(--ink-dim); flex:0 0 auto}
@@ -93,13 +93,8 @@
     .list .item{padding:18px 20px;border-radius:14px;border:1px solid color-mix(in oklab, var(--muted), transparent 35%);background:var(--card)}
 
     /* ABOUT: two-column layout */
-    .about-grid{
-      display:grid; grid-template-columns:1.3fr 1fr; gap:24px; align-items:start;
-    }
-    .about-panel{
-      padding:18px; border:1px solid color-mix(in oklab, var(--muted), transparent 35%);
-      border-radius:14px; background:color-mix(in oklab, var(--card), black 4%);
-    }
+    .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:24px; align-items:start; }
+    .about-panel{ padding:18px; border:1px solid color-mix(in oklab, var(--muted), transparent 35%); border-radius:14px; background:color-mix(in oklab, var(--card), black 4%); }
     .about-panel h3{margin:0 0 8px; font-size:16px}
     .about-panel ul{margin:0; padding-left:18px; color:var(--ink-dim)}
     @media (max-width:900px){ .about-grid{grid-template-columns:1fr} }
@@ -151,7 +146,7 @@
             <li><a href="projects.html#flight-crew">Flight & Crew Scheduling</a></li>
           </ul>
         </div>
-        <a href="#skills">Skills</a>        
+        <a href="#skills">Skills</a>
         <a href="#publications">Publications</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -388,7 +383,7 @@
       let opened = false;
       trig.addEventListener('click', (e) => {
         const isHoverable = window.matchMedia('(hover: hover)').matches;
-        if (isHoverable) return;
+        if (isHoverable) return; // desktop uses hover
         if (!opened) { e.preventDefault(); dd.querySelector('.dropdown-menu').style.display = 'block'; opened = true; }
         else { opened = false; }
       });
