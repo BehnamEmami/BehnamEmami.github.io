@@ -77,10 +77,18 @@
         <h2>Incremental Electrification under Uncertain Energy Consumption</h2>
         <p class="meta">Two‑Stage Stochastic MILP · Benders</p>
         <p>
-         My research develops a two-stage stochastic mixed-integer linear programming (MILP) framework for the multi-phase electrification of urban bus networks under uncertain energy consumption. The first stage determines strategic decisions—such as selecting routes for electrification, siting and sizing charging stations, assigning routes to charging facilities, and determining fleet size—while accounting for stochastic charging demand and time-of-use electricity tariffs. The second stage optimizes daily charging operations for the battery electric bus fleet given realized operational conditions, ensuring schedule adherence and minimizing operational disruptions. To solve this computationally challenging problem, I designed a Benders decomposition algorithm enhanced with a branch-and-cut framework, enabling efficient handling of the large-scale stochastic formulation. A real-world case study on a major metropolitan bus network demonstrates the model’s ability to generate cost-effective fleet deployment strategies, guide charging infrastructure and grid connection planning, and maintain high service reliability during the transition phases. This work showcases how advanced optimization techniques can directly inform sustainable, data-driven transportation planning and operations.
+         My research develops a two-stage stochastic mixed-integer linear programming (MILP) framework for the multi-phase electrification of urban bus networks 
+          under uncertain energy consumption. The first stage determines strategic decisions—such as selecting routes for electrification, siting and sizing 
+          charging stations, assigning routes to charging facilities, and determining fleet size—while accounting for stochastic charging demand and time-of-use 
+          electricity tariffs. The second stage optimizes daily charging operations for the battery electric bus fleet given realized operational conditions, 
+          ensuring schedule adherence and minimizing operational disruptions. To solve this computationally challenging problem, I designed a Benders 
+          decomposition algorithm enhanced with a branch-and-cut framework, enabling efficient handling of the large-scale stochastic formulation. 
+          A real-world case study on a major metropolitan bus network demonstrates the model’s ability to generate cost-effective fleet deployment 
+          strategies, guide charging infrastructure and grid connection planning, and maintain high service reliability during the transition phases. 
+          This work showcases how advanced optimization techniques can directly inform sustainable, data-driven transportation planning and operations.
         </p>
         <ul>
-          <li><strong>First stage:</strong> charger locations, counts, base fleet.</li>
+          <li><strong>First stage:</strong> Facility locations, Facility capacity, Fleet size.</li>
           <li><strong>Second stage:</strong> scenario‑specific assignments and charging operations.</li>
         </ul>
         <a class="back" href="#top">Back to top ↑</a>
