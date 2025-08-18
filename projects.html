@@ -58,10 +58,14 @@
         <h2>BEB Fleet Sizing & Scheduling with Limited Overnight Charging</h2>
         <p class="meta">Branch‑and‑Price · Set Partitioning · SOC Network</p>
         <p>
-          Built a spatial–temporal–state‑of‑charge (SOC) network and a set‑partitioning master problem.
-          Pricing problem is a resource‑constrained shortest path with battery dynamics and charging arcs.
-          Added ng‑route relaxation, dual stabilization, and heuristic seeding. Solves city‑scale instances and
-          quantifies tradeoffs between fleet size and charger capacity.
+          This project focuses on fleet sizing and scheduling of Battery Electric Buses (BEBs) under real-world operational constraints. I developed a spatial–temporal–state-of-charge (SOC) network model that captures the interaction between battery dynamics, trip chaining, and limited overnight charging capacity
+          . The problem was formulated as a single-depot vehicle scheduling problem and solved using an advanced Branch-and-Price algorithm, enabling scalability to large transit networks.
+
+          Through a real-world case study on the Twin Cities transit system, the model optimized more than 1,000 scheduled trips across multiple routes and charging stations, balancing fleet costs, charging station capacity, and service reliability. Results demonstrated that accounting for limited charging infrastructure is critical; ignoring it can underestimate fleet needs and lead to infeasible schedules.
+
+          The framework proved effective in generating cost-efficient electrification strategies, reducing unnecessary deadheading and idle time while ensuring buses maintain reliable state-of-charge levels. Scenario analysis revealed the operational impact of minimum SOC thresholds, charging restrictions during peak electricity hours, and non-dynamic scheduling policies, offering practical insights for transit agencies.
+
+          Overall, this research provides a scalable decision-support tool that can guide agencies in planning BEB transitions, evaluate charging infrastructure investments, and reduce greenhouse gas emissions while ensuring reliable service delivery.
         </p>
         <ul>
           <li><strong>Inputs:</strong> GTFS trips/blocks, terminal transfer times, charger locations/rates, energy model.</li>
